@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [{ "src": "index.js", "use": "@now/node" }],
+  "routes": [{ "src": "/.*", "dest": "/index.js" }],
+
+  "env": {
+    "PORT": "2550",
+    "NODE_ENV": "production",
+    "URL_HOST": "localhost",
+    "MONGODB_URI": "mongodb://localhost:27017/shrtner"
+  }
+}
