@@ -99,10 +99,16 @@ app.post(
         url,
         slug,
       };
-      const created = await urls.insert(newUrl);
       const protocol = req.protocol;
-      res.send(`${protocol}://${urlHost}/${slug}`);
-    } catch (error) {
+      const userAgent = req.headers['user-agent'];
+      const created = await urls.insert(newUrl);
+      if (userAgent && userAgent.includes('curl')) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end(`${protocol}/${urlHost}/${slug}`);
+  } else {
+      res.json(created);
+  }
+}  catch (error) {
       next(error);
     }
   }
