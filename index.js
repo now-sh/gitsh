@@ -104,7 +104,7 @@ app.post(
       const created = await urls.insert(newUrl);
       if (userAgent && userAgent.includes('curl')) {
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end(`${protocol}/${urlHost}/${slug}`);
+        res.end(`${protocol}://${urlHost}/${slug}`);
   } else {
       res.json(created);
   }
