@@ -100,7 +100,8 @@ app.post(
         slug,
       };
       const created = await urls.insert(newUrl);
-      res.json(created);
+      const protocol = req.protocol;
+      res.send(`${protocol}://${urlHost}/${slug}`);
     } catch (error) {
       next(error);
     }
