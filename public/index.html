@@ -82,6 +82,8 @@
           curl -q -LSs -H "Content-Type: application/json" -X POST --data '{"url":"My_URL","slug":"My_URL_Name"}' https://gitsh.vercel.app/url;echo ''
         </code>
       <br />
+      <br />
+      <br />
         <h3 style="color: while">
           Here is a sample function to create a new link <br />
         </h3>
@@ -89,6 +91,7 @@
         <code class="center" style="font-size: 1rem;">
           shrtn_link() { curl -q -LSs -H "Content-Type: application/json" -X POST --data '{"url":"https://$1","slug":"$2"}' https://gitsh.vercel.app/url 2>/dev/null && echo ''||return 2; }
         </code>
+      <br />
       <br />
       </div>
       </div>
