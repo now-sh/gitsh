@@ -4,72 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira+Sans:400,700,400italic,700italic" />
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/darkly/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"/>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js" defer></script>
-    <script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="//fonts.googleapis.com/css?family=Fira+Sans:400,700,400italic,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/darkly/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"
+      defer
+    ></script>
+    <script
+      src="//cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      defer
+    ></script>
     <script src="https://unpkg.com/vue@2.6.11/dist/vue.js" defer></script>
     <script src="/js/app.js" defer></script>
     <title>URL Shortner</title>
   </head>
 
   <body>
-    <div class="mt-5 text-center ">
+    <div class="mt-5 text-center">
       <div class="vh-100">
-      <div>
-        <header>
-          <a href="/"><img src="/favicon.ico" alt="logo" width="128" height="128" /></a> 
-          <br />
-        </header>
-      </div>
-
-      <main id="app">
-        <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
-          <div v-if="error" class="error">{{error}}</div>
-          <input
-            class="input"
-            type="text"
-            v-model="url"
-            name="url"
-            id="url"
-            placeholder="enter a url"
-          />
-          <input
-            class="input"
-            type="text"
-            v-model="slug"
-            name="slug"
-            id="slug"
-            placeholder="enter a slug"
-          />
-          <button type="submit" class="create">create</button>
-        </form>
-        <div v-if="created">
-          <div class="created">
-            <h1 class="center">Your short url is:</h1>
+        <div>
+          <header>
+            <a href="/"
+              ><img src="/favicon.ico" alt="logo" width="128" height="128"
+            /></a>
             <br />
-            <h3 class="center"><a :href="created">{{created}}</a></h3>
-            <br />
-            <br />
-            <a class="btn btg-large btn-primary" href="/">Create another</a>
-          </div>
+          </header>
         </div>
-      </main>
+
+        <main id="app">
+          <form class="form" v-if="formVisible" @submit.prevent="createUrl()">
+            <div v-if="error" class="error">{{error}}</div>
+            <input
+              class="input"
+              type="text"
+              v-model="url"
+              name="url"
+              id="url"
+              placeholder="enter a url"
+            />
+            <input
+              class="input"
+              type="text"
+              v-model="slug"
+              name="slug"
+              id="slug"
+              placeholder="enter a slug"
+            />
+            <button type="submit" class="create">create</button>
+          </form>
+          <div v-if="created">
+            <div class="created">
+              <h1 class="center">Your short url is:</h1>
+              <br />
+              <h3 class="center"><a :href="created">{{created}}</a></h3>
+              <br />
+              <br />
+              <a class="btn btg-large btn-primary" href="/">Create another</a>
+            </div>
+          </div>
+        </main>
       </div>
-      </div>
-      <!---  -->
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <hr />
-      <br />
-      <br />
-      <div class="container center" style="width: auto;">
+    </div>
+    <!---  -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div class="container center" style="width: auto">
       <div class="vh-100">
         <h1 class="center">About URL Shortner</h1>
         <h3 style="color: while">
@@ -77,164 +97,162 @@
           The backend API for creating new links is at /urls. <br />
           Here is a sample curl command to create a new link <br />
         </h3>
-      <br />
-        <code class="center" style="font-size: 1rem;">
-          curl -q -LSs -H "Content-Type: application/json" -X POST --data '{"url":"My_URL","slug":"My_URL_Name"}' https://gitsh.vercel.app/url;echo ''
+        <br />
+        <code class="center" style="font-size: 1rem">
+          curl -q -LSs -H "Content-Type: application/json" -X POST --data
+          '{"url":"My_URL","slug":"My_URL_Name"}'
+          https://gitsh.vercel.app/url;echo ''
         </code>
-      <br />
-      <br />
-      <br />
+        <br />
+        <br />
+        <br />
         <h3 style="color: while">
           Here is a sample function to create a new link <br />
         </h3>
-      <br />
-        <code class="center" style="font-size: 1rem;">
-          shrtn_link() { curl -q -LSs -H "Content-Type: application/json" -X POST --data '{"url":"https://$1","slug":"$2"}' https://gitsh.vercel.app/url 2>/dev/null && echo ''||return 2; }
+        <br />
+        <code class="center" style="font-size: 1rem">
+          shrtn_link() { curl -q -LSs -H "Content-Type: application/json" -X
+          POST --data '{"url":"https://$1","slug":"$2"}'
+          https://gitsh.vercel.app/url 2>/dev/null && echo ''||return 2; }
         </code>
-      <br />
-      <br />
-      </div>
-      </div>
-      <!---  -->
-
-      <!-- Begin Footer -->
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <hr />
-      <br />
-      <br />
-      <div class="footer" align="center">
         <br />
-        <!-- Begin Social Links -->
-        <div class="share-buttons" align="center">
-          <a href="https://github.com/casjay" target="_blank" title="Github">
-            <img
-              alt="Github"
-              src="https://casjaysdev-sites.github.io/static/default-icons/social/github-48x48.png"
-            />
-          </a>
-          <br />
-        </div>
         <br />
-        <!-- End Social Links-->
+      </div>
+    </div>
+    <!---  -->
 
-        <!-- Begin Casjays Developments Footer -->
-        <div class="footer footer-custom col-sm-12">
-          <div class="footer vh-100">
-            <div class="footer-custom fs-4">
-              Copyright 1999 - 2024
-              <br />
-              <a href="https://casjay.pro" target="_blank"
-                >Casjays Developments</a
-              >
-              and
-              <a href="https://malaks-us.github.io/jason" target="_blank">
-                Jason M. Hempstead-Malak
-              </a>
-              <br />
-              Hosting by
-              <a href="https://casjay.pro/hosting" target="_blank">
-                Casjays Developments: Hosting
-              </a>
-              <br />
-              and powered by
-              <a href="https://casjaysdev.pro" target="_blank"
-                >CasjaysDev.pro</a
-              >
-              <br />
-              <br />
-              <a href="https://www.patreon.com/casjay" target="_blank">
-                <img
-                  src="https://img.shields.io/badge/patreon-donate-orange.svg"
-                  border="0"
-                  alt="Casjays Patreon Page"
-                />
-              </a>
+    <!-- Begin Footer -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr />
+    <br />
+    <br />
+    <div class="footer" align="center">
+      <br />
+      <!-- Begin Social Links -->
+      <div class="share-buttons" align="center">
+        <a href="https://github.com/casjay" target="_blank" title="Github">
+          <img
+            alt="Github"
+            src="https://casjaysdev-sites.github.io/static/default-icons/social/github-48x48.png"
+          />
+        </a>
+        <br />
+      </div>
+      <br />
+      <!-- End Social Links-->
 
-              <a href="https://www.paypal.me/casjaysdev" target="_blank">
-                <img
-                  src="https://img.shields.io/badge/Donate-PayPal-green.svg?casjay@yahoo.com"
-                  alt="Casjays Paypal Page"
-                />
-              </a>
+      <!-- Begin Casjays Developments Footer -->
+      <div class="footer footer-custom col-sm-12">
+        <div class="footer vh-100">
+          <div class="footer-custom fs-4">
+            Copyright 1999 - 2024
+            <br />
+            <a href="https://casjay.pro" target="_blank"
+              >Casjays Developments</a
+            >
+            and
+            <a href="https://malaks-us.github.io/jason" target="_blank">
+              Jason M. Hempstead-Malak
+            </a>
+            <br />
+            Hosting by
+            <a href="https://casjay.pro/hosting" target="_blank">
+              Casjays Developments: Hosting
+            </a>
+            <br />
+            and powered by
+            <a href="https://casjaysdev.pro" target="_blank">CasjaysDev.pro</a>
+            <br />
+            <br />
+            <a href="https://www.patreon.com/casjay" target="_blank">
+              <img
+                src="https://img.shields.io/badge/patreon-donate-orange.svg"
+                border="0"
+                alt="Casjays Patreon Page"
+              />
+            </a>
 
+            <a href="https://www.paypal.me/casjaysdev" target="_blank">
+              <img
+                src="https://img.shields.io/badge/Donate-PayPal-green.svg?casjay@yahoo.com"
+                alt="Casjays Paypal Page"
+              />
+            </a>
+
+            <br />
+            <br />
+            <a href="https://help.casjay.pro" target="_blank"
+              >CasjaysDev Support</a
+            >
+            |
+            <a href="https://bugs.casjay.pro" target="_blank"
+              >CasjaysDev Bugs</a
+            >
+            <br />
+            <a href="https://status.casjay.pro" target="_blank"
+              >System Status</a
+            >
+            |
+            <a href="https://servers.casjay.pro" target="_blank"
+              >Service Status</a
+            >
+            |
+            <a href="https://status.casjaysdev.pro" target="_blank">
+              Complete Status
+            </a>
+            <br />
+            <a href="https://casjaysdev.pro/domains.html" target="_blank">
+              Casjays Developments Domains
+            </a>
+            <br />
+            <br />
+            Casjays Developments privacy policy can be found at
+            <br />
+            <a href="https://casjaysdev.pro/policy/" target="_blank">
+              https://casjaysdev.pro/policy
+            </a>
+            <br />
+            <!-- End Casjays Developments Footer -->
+
+            <!-- Theme powered -->
+            <div class="text-center" style="color: royalblue">
               <br />
+              Made with 💜💜💜💜💜💜 by
               <br />
-              <a href="https://help.casjay.pro" target="_blank"
-                >CasjaysDev Support</a
-              >
-              |
-              <a href="https://bugs.casjay.pro" target="_blank"
-                >CasjaysDev Bugs</a
-              >
-              <br />
-              <a href="https://status.casjay.pro" target="_blank"
-                >System Status</a
-              >
-              |
-              <a href="https://servers.casjay.pro" target="_blank"
-                >Service Status</a
-              >
-              |
-              <a href="https://status.casjaysdev.pro" target="_blank">
-                Complete Status
+              <a href="http://github.com/casjay" target="_blank" rel="noopener">
+                Jason M. Hempstead (Casjay)
               </a>
               <br />
-              <a href="https://casjaysdev.pro/domains.html" target="_blank">
-                Casjays Developments Domains
+              This site is powered by
+              <a href="https://github.com/now-sh/gitsh" target="_blank">
+                open source
               </a>
-              <br />
-              <br />
-              Casjays Developments privacy policy can be found at
-              <br />
-              <a href="https://casjaysdev.pro/policy/" target="_blank">
-                https://casjaysdev.pro/policy
-              </a>
-              <br />
-              <!-- End Casjays Developments Footer -->
+              project
+            </div>
+            <br />
+            <!-- End Theme powered -->
 
-              <!-- Theme powered -->
-              <div class="text-center" style="color: royalblue">
-                <br />
-                Made with 💜💜💜💜💜💜 by
-                <br />
-                <a
-                  href="http://github.com/casjay"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Jason M. Hempstead (Casjay)
-                </a>
-                <br />
-                This site is powered by
-                <a href="https://github.com/now-sh/gitsh" target="_blank">
-                  open source
-                </a>
-                project
-              </div>
-              <br />
-              <!-- End Theme powered -->
+            <!-- Begin Google Track -->
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=UA-936146-1"
+            ></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag() {
+                dataLayer.push(arguments);
+              }
+              gtag("js", new Date());
+              gtag("config", "UA-936146-1");
+            </script>
+            <!-- Eng Google Track -->
 
-              <!-- Begin Google Track -->
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=UA-936146-1"
-              ></script>
-              <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag() {
-                  dataLayer.push(arguments);
-                }
-                gtag("js", new Date());
-                gtag("config", "UA-936146-1");
-              </script>
-              <!-- Eng Google Track -->
-
-              <!-- Begin EU compliant -->
-              <div class="center text-center">
+            <!-- Begin EU compliant -->
+            <div class="center text-center">
               <script type="module">
                 window.addEventListener("load", function () {
                   window.cookieconsent.initialise({
@@ -260,20 +278,19 @@
                   });
                 });
               </script>
-              </div>
-              <br />
-              <!-- end EU compliant --->
-
-              <!-- Begin Github ribbon -->
-              <a
-                class="github-fork-ribbon"
-                href="https://github.com/now-sh/gitsh"
-                data-ribbon="Fork me on GitHub"
-                title="Fork me on GitHub"
-                >Fork me on GitHub</a
-              >
-              <!-- End Github ribbon -->
             </div>
+            <br />
+            <!-- end EU compliant --->
+
+            <!-- Begin Github ribbon -->
+            <a
+              class="github-fork-ribbon"
+              href="https://github.com/now-sh/gitsh"
+              data-ribbon="Fork me on GitHub"
+              title="Fork me on GitHub"
+              >Fork me on GitHub</a
+            >
+            <!-- End Github ribbon -->
           </div>
         </div>
       </div>
